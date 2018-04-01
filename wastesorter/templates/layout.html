@@ -1,0 +1,45 @@
+<!doctype html>
+<head>
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<!-code for logo goes here->
+<center>
+        <div class=page>
+          <div class=banner>
+            <img src="https://i.imgur.com/tCDY1qD.jpg" alt="logo" width="700">
+          </div>
+
+  {% for message in get_flashed_messages() %}
+	<div class=flash>{{ message }}</div>
+  {% endfor %}
+ 
+</div>
+#end code for logo
+{% block results %} {% endblock %} <!- this is what i can use jinja 2 for -> 
+
+<!- uploading image -> 
+<head>
+    <title>Upload</title>
+</head>
+<body>
+<form method=POST enctype=multipart/form-data action="{{ url_for('upload') }}">
+    <input type=file name=photo>
+    <input type="submit">
+</form>
+</body>
+
+  <br><br>
+  <div style="width:500px" class=metanav>
+	<img src="{{url_for('static', filename='image/test.jpg')}}" style="max-width:100%">
+  </div>
+  <br><br>
+
+  <div class=metanav>
+	<form method=GET enctype=multipart/form-data action="{{ url_for('classify') }}">
+	  <input type="submit" value="Classify Image" class="button">
+	</form>
+  </div>
+</div>
+
+</center>
